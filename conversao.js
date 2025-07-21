@@ -8,13 +8,14 @@ export default async function handler(req, res) {
   const fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${trackingcode}`;
 
   const payload = {
+    test_event_code: "TEST66341", // código de teste copiado do Events Manager
     data: [{
       event_name: "Purchase",
       event_time: Math.floor(Date.now() / 1000),
       action_source: "website",
       event_source_url: "https://blaze.cxclick.com/visit/?bta=51366&nci=5470&brand=blaze",
       user_data: {
-        fbc: fbc
+        fbc
       },
       custom_data: {
         currency: "BRL",
@@ -34,10 +35,8 @@ export default async function handler(req, res) {
     );
 
     const result = await response.json();
-    console.log('Meta Response:', result);
     return res.status(200).json({ status: 'ok', result });
   } catch (err) {
-    console.error('Erro ao enviar para Meta:', err);
-    return res.status(500).json({ error: 'Erro no envio para Meta' });
+    return res.status(500).json({ error: 'Erro ao enviar para Meta' });
   }
 }
