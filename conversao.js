@@ -8,7 +8,6 @@ export default async function handler(req, res) {
   const fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${trackingcode}`;
 
   const payload = {
-    test_event_code: "TEST66341", // código de teste copiado do Events Manager
     data: [{
       event_name: "Purchase",
       event_time: Math.floor(Date.now() / 1000),
